@@ -17,7 +17,7 @@ async def send(ctx,*,channel_id):
   def check(msg):
     return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
 
-  await ctx.send("Please type what would you like to send[clickme](https://stackoverflow.com/questions/62953662/discord-py-what-is-the-correct-way-of-checking-if-a-message-contains-an-elemen)")
+  await ctx.send("Please type what would you like to send")
 
 
   msg = await mainbot.wait_for("message", check=check)
