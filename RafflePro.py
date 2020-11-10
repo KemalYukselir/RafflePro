@@ -40,6 +40,7 @@ async def send(ctx,*,channel_id):
 
   if msg_confirm.lower().strip() == "stop":
     return
+
   else:
 
     if msg_confirm == "yes":
@@ -52,6 +53,18 @@ async def send(ctx,*,channel_id):
       return
 
 
+@mainbot.event
+@commands.guild_only()
+async def on_message(message):
+
+
+
+  if message.content.lower().startswith('stop'):
+
+    return
+  
+  await mainbot.process_commands(message)
+    
 
 
 @mainbot.command()
@@ -95,36 +108,54 @@ async def sendlink(ctx,*,channel_id):
     msg_image = await mainbot.wait_for("message", check=check)
     msg_image = str(msg_image.content)
     
-
-
     
     embed.set_thumbnail(url = msg_image)
 
     await ctx.send(embed=embed)
 
+    time.sleep(2)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+      await ctx.send("sent to <#"+ channel_id + ">")
+      await channel.send(embed=embed) 
+    
+    
+    else:
+
+      await ctx.send("Reverted")
+      return
+
+
+
   else:
     await ctx.send(embed=embed)
+    time.sleep(2)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
+
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+      await ctx.send("sent to <#"+ channel_id + ">")
+      await channel.send(embed=embed) 
+    
+    
+    else:
+
+      await ctx.send("Reverted")
+      return
 
     
 
 
   
-
-#@mainbot.command(pass_context=True)
-#async def message_role(ctx, role: discord.Role, *, message):
-
-#  for member in ctx.message.server.members:
-
- #   if role in member.roles:
-  #    await mainbot.send_message(member, message)
-
-
-@mainbot.command(pass_context=True)
-async def message_role(ctx, role: discord.Role, *, send):
-
-  for member in ctx.message.guild:
-    if role in member.roles:
-      await mainbot.send_message(member, send)
 
 
 
