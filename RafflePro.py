@@ -5,7 +5,6 @@ import time
 mainbot = commands.Bot(command_prefix = "-")
 mainbot.remove_command("help")
 
-name = 'deniz'
 
 @mainbot.command()
 @commands.has_role('Owners')
