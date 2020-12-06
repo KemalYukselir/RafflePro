@@ -51,19 +51,50 @@ async def send(ctx,*,channel_id):
       await ctx.send("Reverted")
       return
 
+@mainbot.command()
+async def edit(ctx,*,channelID):
 
-@mainbot.event
-@commands.guild_only()
-async def on_message(message):
+    channelIdOfMessage = mainbot.get_channel(int(channelID))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
+
+    await ctx.send("What is id of the message you would like to edit")
+
+    responseMessageID = await mainbot.wait_for("message", check=check)
+    responseMessageID = int(responseMessageID.content)
+
+
+    await ctx.send("Please send the edited message")
+
+    responseEditContent = await mainbot.wait_for("message", check=check)
+    responseEditContent = str(responseEditContent.content)
+
+    await ctx.send(responseEditContent)
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
+
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+
+    if msg_confirm == "yes":
+        await ctx.send("Edited the message in <#"+ str(channelID) + ">")
+
+        msg = await channelIdOfMessage.fetch_message(responseMessageID)
+        await msg.edit(content=responseEditContent)
+
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+                
 
 
 
-  if message.content.lower().startswith('stop'):
-
-    return
-  
-  await mainbot.process_commands(message)
     
+
+
 
 
 @mainbot.command()
