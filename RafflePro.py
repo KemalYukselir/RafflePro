@@ -6,11 +6,13 @@ mainbot = commands.Bot(command_prefix = "-")
 mainbot.remove_command("help")
 
 
+
 @mainbot.command()
 @commands.has_role('Owners')
 async def send(ctx,*,channel_id):
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
 
+  channel_id = channel_id.replace("#","").replace("<","").replace(">","")
   channel = mainbot.get_channel(int(channel_id))
   
   def check(msg):
@@ -52,9 +54,12 @@ async def send(ctx,*,channel_id):
       return
 
 @mainbot.command()
-async def edit(ctx,*,channelID):
+async def edit(ctx,*,channel_id):
 
-    channelIdOfMessage = mainbot.get_channel(int(channelID))
+    channel_id = channel_id.replace("#","").replace("<","").replace(">","")
+    channel = mainbot.get_channel(int(channel_id))
+
+    channelIdOfMessage = mainbot.get_channel(int(channel_id))
 
     def check(msg):
         return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
@@ -78,7 +83,7 @@ async def edit(ctx,*,channelID):
 
 
     if msg_confirm == "yes":
-        await ctx.send("Edited the message in <#"+ str(channelID) + ">")
+        await ctx.send("Edited the message in <#"+ str(channel_id) + ">")
 
         msg = await channelIdOfMessage.fetch_message(responseMessageID)
         await msg.edit(content=responseEditContent)
@@ -90,18 +95,13 @@ async def edit(ctx,*,channelID):
         return
                 
 
-
-
-    
-
-
-
-
 @mainbot.command()
 @commands.has_role('Owners')
 async def sendlink(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+  channel_id = channel_id.replace("#","").replace("<","").replace(">","")
   channel = mainbot.get_channel(int(channel_id))
 
   def check(msg):
@@ -183,10 +183,6 @@ async def sendlink(ctx,*,channel_id):
       return
 
     
-
-
-  
-
 
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
