@@ -5,8 +5,11 @@ import time
 mainbot = commands.Bot(command_prefix = "-")
 mainbot.remove_command("help")
 
-#Deniz commit
 
+
+
+
+"Kemal commitdsfdfdf"
 
 @mainbot.command()
 @commands.has_role('Owners')
