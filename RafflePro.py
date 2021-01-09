@@ -6,11 +6,6 @@ mainbot = commands.Bot(command_prefix = "-")
 mainbot.remove_command("help")
 
 
-
-
-
-"Kemal commitdsfdfdf"
-
 @mainbot.command()
 @commands.has_role('Owners')
 async def send(ctx,*,channel_id):
@@ -33,7 +28,6 @@ async def send(ctx,*,channel_id):
     return
 
   
-
   await ctx.send(msg)
 
   time.sleep(1.5)
@@ -186,7 +180,48 @@ async def sendlink(ctx,*,channel_id):
       await ctx.send("Reverted")
       return
 
-    
+
+
+@mainbot.command()
+@commands.has_role('Owners')
+
+async def raffle(ctx,*,channel_id):
+  channel_id = channel_id.replace("#","").replace("<","").replace(">","")
+  channel = mainbot.get_channel(int(channel_id))
+
+  def check(msg):
+    return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
+
+  await ctx.send("Please type what would you like to send")
+
+  msg = await mainbot.wait_for("message", check=check)
+  msg = str(msg.content)
+
+  await ctx.send(msg)
+
+  time.sleep(1.5)
+
+  await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
+
+  msg_confirm = await mainbot.wait_for("message", check=check)
+  msg_confirm = str(msg_confirm.content).lower().strip()
+
+  if msg_confirm.lower().strip() == "stop":
+    return
+
+  else:
+
+    if msg_confirm == "yes":
+      await ctx.send("sent to <#"+ channel_id + ">")
+
+
+      theMsg = await channel.send(msg) 
+      await theMsg.add_reaction(u"\u2705")
+
+
+    else:
+      await ctx.send("Reverted")
+      return
 
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
