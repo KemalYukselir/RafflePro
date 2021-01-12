@@ -7,7 +7,7 @@ mainbot.remove_command("help")
 
 
 @mainbot.command()
-@commands.has_role('Owners')
+@commands.has_any_role('Owners',"Support")
 async def send(ctx,*,channel_id):
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
 
@@ -52,6 +52,7 @@ async def send(ctx,*,channel_id):
       return
 
 @mainbot.command()
+@commands.has_any_role('Owners',"Support")
 async def edit(ctx,*,channel_id):
 
     channel_id = channel_id.replace("#","").replace("<","").replace(">","")
@@ -94,7 +95,7 @@ async def edit(ctx,*,channel_id):
                 
 
 @mainbot.command()
-@commands.has_role('Owners')
+@commands.has_any_role('Owners',"Support")
 async def sendlink(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -183,8 +184,7 @@ async def sendlink(ctx,*,channel_id):
 
 
 @mainbot.command()
-@commands.has_role('Owners')
-
+@commands.has_any_role('Owners',"Support")
 async def raffle(ctx,*,channel_id):
   channel_id = channel_id.replace("#","").replace("<","").replace(">","")
   channel = mainbot.get_channel(int(channel_id))
