@@ -238,17 +238,25 @@ async def jdsportsuk(ctx,*,channel_id):
 
 
   raffle_link = await mainbot.wait_for("message", check=check)
-  raffle_link = str(msg_link.content)
+  raffle_link = str(raffle_link.content)
 
-  embed=discord.Embed(title='JD Sports UK', description=f"[Click here]({raffle_link})")
+  await ctx.send("Please provide the item name")
+
+  item_name = await mainbot.wait_for("message", check=check)
+  item_name = str(item_name.content)
+
+  embed=discord.Embed(title=f'JD Sports UK - {item_name}', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {raffle_link}")
   embed.set_thumbnail(url = "https://uploads.prod01.london.platform-os.com/instances/351/assets/images/store_images/JD%20Sports/JD%20Sports_2.jpg?updated=1587557520")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
-  embed.add_embed_field(name='**Tips** :pencil:', value='FCFS - Enter ASAP\nEnter once per address\nRandom phone numbers\nAdd multiple emails to your paypal accounts\nUtilise guest paypal checkout')
-  embed.add_embed_field(name='**Raffle Tier :trophy:**', value='Tier 1 Raffle')
-  embed.set_timestamp()
+  embed.add_field(name='**Requirements** :pencil:', value=':x: Accounts \n:x: Instagrams \n:white_check_mark:Paypal Checkout')
+  embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 1 Raffle')  
+  embed.add_field(name='**Tips** :pencil:', value='- FCFS so enter ASAP\n- Add multiple emails to your paypal accounts\n- Utilise guest paypal checkout\n- Use random phone numbers')
+
 
   time.sleep(2)
+
+  await ctx.send(embed=embed)
 
   await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
   msg_confirm = await mainbot.wait_for("message", check=check)
@@ -257,35 +265,14 @@ async def jdsportsuk(ctx,*,channel_id):
   if msg_confirm == "yes":
 
     await ctx.send("sent to <#"+ channel_id + ">")
-    await channel.send(embed=embed) 
+    theMsg = await channel.send(embed=embed)
+    await theMsg.add_reaction(u"\u2705")
     
     
-    else:
-
-      await ctx.send("Reverted")
-      return
-
-
-
   else:
-    await ctx.send(embed=embed)
-    time.sleep(2)
 
-    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
-
-    msg_confirm = await mainbot.wait_for("message", check=check)
-    msg_confirm = str(msg_confirm.content).lower().strip()
-
-    if msg_confirm == "yes":
-
-      await ctx.send("sent to <#"+ channel_id + ">")
-      await channel.send(embed=embed) 
-    
-    
-    else:
-
-      await ctx.send("Reverted")
-      return
+    await ctx.send("Reverted")
+    return
 
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
