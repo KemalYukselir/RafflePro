@@ -282,8 +282,8 @@ async def footpatrol(ctx,*,channel_id):
 
   await ctx.send("Please provide the raffle link")
 
-  item_name = await mainbot.wait_for("message", check=check)
-  item_name = str(item_name.content)
+  raffle_link = await mainbot.wait_for("message", check=check)
+  raffle_link = str(raffle_link.content)
 
   embed=discord.Embed(title=f'Footpatrol', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {raffle_link}")
   embed.set_thumbnail(url = "https://m.footpatrol.com//skins/footpatrolgb-mobile/public/img/icons/app/favicon-192x192.png")
