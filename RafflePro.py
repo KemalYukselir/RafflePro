@@ -328,8 +328,10 @@ async def footshop(ctx,*,channel_id):
 
   await ctx.send("Please provide the raffle link")
 
-  item_name = await mainbot.wait_for("message", check=check)
-  item_name = str(item_name.content)
+
+  raffle_link = await mainbot.wait_for("message", check=check)
+  raffle_link = str(raffle_link.content)
+
 
   embed=discord.Embed(title=f'Footshop', description=f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {raffle_link}")
   embed.set_thumbnail(url = "https://media.glassdoor.com/sqll/1805993/footshop-squarelogo-1522228062767.png")
