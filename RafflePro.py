@@ -326,7 +326,9 @@ async def footpatrol(ctx,*,channel_id):
     await ctx.send("Reverted")
     return
 
-async def footpatrol(ctx,*,channel_id):
+@mainbot.command()
+@commands.has_any_role('Owners',"Support")
+async def footshop(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
 
