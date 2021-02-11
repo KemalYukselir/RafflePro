@@ -236,16 +236,10 @@ async def jdsportsuk(ctx,*,channel_id):
 
   await ctx.send("Please provide the raffle link")
 
-
   raffle_link = await mainbot.wait_for("message", check=check)
   raffle_link = str(raffle_link.content)
 
-  await ctx.send("Please provide the item name")
-
-  item_name = await mainbot.wait_for("message", check=check)
-  item_name = str(item_name.content)
-
-  embed=discord.Embed(title=f'JD Sports UK - {item_name}', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {raffle_link}")
+  embed=discord.Embed(title=f'JD Sports UK', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {raffle_link}")
   embed.set_thumbnail(url = "https://uploads.prod01.london.platform-os.com/instances/351/assets/images/store_images/JD%20Sports/JD%20Sports_2.jpg?updated=1587557520")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
@@ -287,12 +281,6 @@ async def footpatrol(ctx,*,channel_id):
     return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
 
   await ctx.send("Please provide the raffle link")
-
-
-  raffle_link = await mainbot.wait_for("message", check=check)
-  raffle_link = str(raffle_link.content)
-
-  await ctx.send("Please provide the item name")
 
   item_name = await mainbot.wait_for("message", check=check)
   item_name = str(item_name.content)
@@ -339,12 +327,6 @@ async def footshop(ctx,*,channel_id):
     return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
 
   await ctx.send("Please provide the raffle link")
-
-
-  raffle_link = await mainbot.wait_for("message", check=check)
-  raffle_link = str(raffle_link.content)
-
-  await ctx.send("Please provide the item name")
 
   item_name = await mainbot.wait_for("message", check=check)
   item_name = str(item_name.content)
