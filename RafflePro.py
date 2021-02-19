@@ -391,11 +391,10 @@ async def newrelease(ctx,*,channel_id):
   img = str(img.content)
 
 
-  embed=discord.Embed(title=f'{item_name}')
+  embed=discord.Embed(title=f'{item_name}', description = f"**Resell Value** :chart_with_upwards_trend: \n [StockX]({stockx_link})")
   embed.set_thumbnail(url = img)
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
-  embed.add_field(name='**Resell Value** :chart_with_upwards_trend:', value=f"[StockX]({stockx_link})")
 
   time.sleep(2)
 
