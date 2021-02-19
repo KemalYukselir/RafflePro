@@ -236,10 +236,10 @@ async def jdsportsuk(ctx,*,channel_id):
 
   await ctx.send("Please provide the raffle link")
 
-  raffle_link = await mainbot.wait_for("message", check=check)
-  raffle_link = str(raffle_link.content)
+  stockx_link = await mainbot.wait_for("message", check=check)
+  stockx_link = str(stockx_link.content)
 
-  embed=discord.Embed(title=f'JD Sports UK', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {raffle_link}")
+  embed=discord.Embed(title=f'JD Sports UK', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {stockx_link}")
   embed.set_thumbnail(url = "https://uploads.prod01.london.platform-os.com/instances/351/assets/images/store_images/JD%20Sports/JD%20Sports_2.jpg?updated=1587557520")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
@@ -282,10 +282,10 @@ async def footpatrol(ctx,*,channel_id):
 
   await ctx.send("Please provide the raffle link")
 
-  raffle_link = await mainbot.wait_for("message", check=check)
-  raffle_link = str(raffle_link.content)
+  stockx_link = await mainbot.wait_for("message", check=check)
+  stockx_link = str(stockx_link.content)
 
-  embed=discord.Embed(title=f'Footpatrol', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {raffle_link}")
+  embed=discord.Embed(title=f'Footpatrol', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {stockx_link}")
   embed.set_thumbnail(url = "https://m.footpatrol.com//skins/footpatrolgb-mobile/public/img/icons/app/favicon-192x192.png")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
@@ -329,11 +329,11 @@ async def footshop(ctx,*,channel_id):
   await ctx.send("Please provide the raffle link")
 
 
-  raffle_link = await mainbot.wait_for("message", check=check)
-  raffle_link = str(raffle_link.content)
+  stockx_link = await mainbot.wait_for("message", check=check)
+  stockx_link = str(stockx_link.content)
 
 
-  embed=discord.Embed(title=f'Footshop', description=f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {raffle_link}")
+  embed=discord.Embed(title=f'Footshop', description=f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {stockx_link}")
   embed.set_thumbnail(url = "https://media.glassdoor.com/sqll/1805993/footshop-squarelogo-1522228062767.png")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
@@ -341,6 +341,61 @@ async def footshop(ctx,*,channel_id):
   embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 1 Raffle')  
   embed.add_field(name='**Tips** :pencil:', value='\n- Use each card once\n- Unique addresses\n- Spread your entries / high delays')
 
+
+  time.sleep(2)
+
+  await ctx.send(embed=embed)
+
+  await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
+  msg_confirm = await mainbot.wait_for("message", check=check)
+  msg_confirm = str(msg_confirm.content).lower().strip()
+
+  if msg_confirm == "yes":
+
+    await ctx.send("sent to <#"+ channel_id + ">")
+    theMsg = await channel.send(embed=embed)
+    await theMsg.add_reaction(u"\u2705")
+    
+    
+  else:
+
+    await ctx.send("Reverted")
+    return
+
+@mainbot.command()
+@commands.has_any_role('Owners',"Support")
+async def newrelease(ctx,*,channel_id):
+  
+  await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+  channel_id = channel_id.replace("#","").replace("<","").replace(">","")
+  channel = mainbot.get_channel(int(channel_id))
+
+  def check(msg):
+    return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
+
+  await ctx.send("Please provide the item name")
+
+
+  item_name = await mainbot.wait_for("message", check=check)
+  item_name = str(item_name.content)
+
+  await ctx.send("Please provide the StockX link")
+
+  stockx_link = await mainbot.wait_for("message", check=check)
+  stockx_link = str(stockx_link.content)
+
+  await ctx.send("Please provide a PNG discord url of the item")
+
+  img = await mainbot.wait_for("message", check=check)
+  img = str(img.content)
+
+
+  embed=discord.Embed(title=f'{item_name}')
+  embed.set_thumbnail(url = img)
+
+  embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
+  embed.add_field(name='**Resell Value** :chart_with_upwards_trend:', value=f"[StockX]({stockx_link})")
 
   time.sleep(2)
 
