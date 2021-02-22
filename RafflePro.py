@@ -329,11 +329,17 @@ async def footshop(ctx,*,channel_id):
   await ctx.send("Please provide the raffle link")
 
 
-  stockx_link = await mainbot.wait_for("message", check=check)
-  stockx_link = str(stockx_link.content)
+  raffle_link = await mainbot.wait_for("message", check=check)
+  raffle_link = str(raffle_link.content)
+
+  await ctx.send("Please provide the closing date and time")
 
 
-  embed=discord.Embed(title=f'Footshop', description=f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {stockx_link}")
+  close_time = await mainbot.wait_for("message", check=check)
+  close_time = str(close_time.content)
+
+
+  embed=discord.Embed(title=f'Footshop', description=f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {raffle_link}\n\n**Closes**\n {close_time}")
   embed.set_thumbnail(url = "https://media.glassdoor.com/sqll/1805993/footshop-squarelogo-1522228062767.png")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
