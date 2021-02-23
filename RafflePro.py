@@ -431,6 +431,7 @@ async def naked(ctx,*,channel_id):
     await ctx.send("Reverted")
     return
 
+@mainbot.command()
 @commands.has_any_role('Owners',"Support")
 async def stress(ctx,*,channel_id):
   
