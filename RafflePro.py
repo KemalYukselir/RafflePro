@@ -659,7 +659,7 @@ async def footshop(ctx,*,channel_id):
   embed.set_thumbnail(url = "https://media.glassdoor.com/sqll/1805993/footshop-squarelogo-1522228062767.png")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
-  embed.add_field(name='**Requirements** :pencil:', value=':x: Accounts \n:x: Instagrams \n:white_check_mark:Unique Cards')
+  embed.add_field(name='**Requirements** :pencil:', value=':x: Accounts \n:white_check_mark: Instagrams \n:white_check_mark:Unique Cards')
   embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 1 Raffle')  
   embed.add_field(name='**Tips** :pencil:', value='\n- Use each card once\n- Unique addresses\n- Spread your entries / high delays 800s')
 
