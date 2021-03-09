@@ -976,6 +976,61 @@ async def randomrelease(ctx,*,channel_id):
     await ctx.send("Reverted")
     return
 
+@mainbot.command()
+@commands.has_any_role('Owners',"Support")
+async def botstatus(ctx,*,channel_id):
+  
+  await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+  channel_id = channel_id.replace("#","").replace("<","").replace(">","")
+  channel = mainbot.get_channel(int(channel_id))
+
+  def check(msg):
+    return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower().strip()
+
+  await ctx.send("Please provide the raffle status")
+
+  rafflestatus = await mainbot.wait_for("message", check=check)
+  rafflestatus = str(rafflestatus.content)
+
+  await ctx.send("Please provide the generator status")
+
+  generatorstatus = await mainbot.wait_for("message", check=check)
+  generatorstatus = str(generatorstatus.content)
+
+  await ctx.send("Please provide the tool status")
+
+  toolstatus = await mainbot.wait_for("message", check=check)
+  toolstatus = str(toolstatus.content)
+
+  embed=discord.Embed(title=f'RafflePro Feature Status', description = f"Here is the status of all Raffles / Generators / Tools")
+
+  embed.add_field(name='**Raffle Status**', value=rafflestatus)
+  embed.add_field(name='**Generator Status**', value=generatorstatus)
+  embed.add_field(name='**Tool Status**', value=toolstatus)
+
+  embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
+
+  time.sleep(2)
+
+  await ctx.send(embed=embed)
+
+  await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel")
+  msg_confirm = await mainbot.wait_for("message", check=check)
+  msg_confirm = str(msg_confirm.content).lower().strip()
+
+  if msg_confirm == "yes":
+
+    await ctx.send("sent to <#"+ channel_id + ">")
+    theMsg = await channel.send(embed=embed)
+    await theMsg.add_reaction(u"\u2705")
+    
+    
+  else:
+
+    await ctx.send("Reverted")
+    return
+
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
 
