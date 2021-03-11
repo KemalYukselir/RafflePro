@@ -580,7 +580,7 @@ async def footpatrol(ctx,*,channel_id):
 
 @mainbot.command()
 @commands.has_any_role('Owners',"Support")
-async def footpatrol(ctx,*,channel_id):
+async def thehipstore(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
 
@@ -602,7 +602,7 @@ async def footpatrol(ctx,*,channel_id):
   close_time = str(close_time.content)
 
   embed=discord.Embed(title=f'The Hip Store', description=f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}")
-  embed.set_thumbnail(url = "https://m.footpatrol.com//skins/footpatrolgb-mobile/public/img/icons/app/favicon-192x192.png")
+  embed.set_thumbnail(url = "https://www.raffle-sneakers.com/wp-content/uploads/2020/03/thehiphopstore.jpg")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
   embed.add_field(name='**Requirements** :pencil:', value=':x: Accounts \n:x: Instagrams \n:white_check_mark:Paypal Checkout\n:white_check_mark:Payment Hold')
