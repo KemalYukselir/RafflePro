@@ -545,7 +545,6 @@ async def footpatrol(ctx,*,channel_id):
 
   await ctx.send("Please provide the closing date and time")
 
-
   close_time = await mainbot.wait_for("message", check=check)
   close_time = str(close_time.content)
 
@@ -1186,6 +1185,16 @@ async def botstatus(ctx,*,channel_id):
 
     await ctx.send("Reverted")
     return
+
+
+@mainbot.command()
+@commands.has_any_role('Owners',"Support")
+async def archiveChannel(ctx):
+  channel = ctx.channel
+
+  B = discord.utils.get(ctx.guild.channels, name= "test")
+  await ctx.channel.edit(category=B)
+
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
