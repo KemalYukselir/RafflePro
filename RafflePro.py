@@ -1192,7 +1192,7 @@ async def botstatus(ctx,*,channel_id):
 async def archiveChannel(ctx):
   channel = ctx.channel
 
-  B = discord.utils.get(ctx.guild.channels, name= "test")
+  B = discord.utils.get(ctx.guild.channels, name= "archives")
   await ctx.channel.edit(category=B)
 
 
