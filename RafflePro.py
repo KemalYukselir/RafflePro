@@ -1195,6 +1195,14 @@ async def archiveChannel(ctx):
   B = discord.utils.get(ctx.guild.channels, name= "archives")
   await ctx.channel.edit(category=B)
 
+@mainbot.command()
+@commands.has_any_role('Owners',"Support")
+async def releasesChannel(ctx):
+  channel = ctx.channel
+
+  B = discord.utils.get(ctx.guild.channels, name= "Releases")
+  await ctx.channel.edit(category=B)
+
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
