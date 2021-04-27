@@ -1213,7 +1213,7 @@ async def cactusplantfleamarket(ctx, *, channel_id):
 
 @mainbot.command()
 @commands.has_any_role('Owners', "Support")
-async def CommonwealthPH(ctx, *, channel_id):
+async def commonwealthph(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
 
