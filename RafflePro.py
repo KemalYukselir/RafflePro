@@ -652,7 +652,7 @@ async def footpatrolinstorefr(ctx,*,channel_id):
   close_time = await mainbot.wait_for("message", check=check)
   close_time = str(close_time.content)
 
-  embed=discord.Embed(title=f'Footpatrol', description=f"**Region**\n :flag_fr:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}")
+  embed=discord.Embed(title=f'Footpatrol Instore FR', description=f"**Region**\n :flag_fr:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}")
   embed.set_thumbnail(url = "https://m.footpatrol.com//skins/footpatrolgb-mobile/public/img/icons/app/favicon-192x192.png")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
@@ -704,7 +704,7 @@ async def footpatrolinstoreuk(ctx,*,channel_id):
   close_time = await mainbot.wait_for("message", check=check)
   close_time = str(close_time.content)
 
-  embed=discord.Embed(title=f'Footpatrol Instore', description=f"**Region**\n :flag_gb:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}")
+  embed=discord.Embed(title=f'Footpatrol Instore UK', description=f"**Region**\n :flag_gb: :handshake:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}")
   embed.set_thumbnail(url = "https://m.footpatrol.com//skins/footpatrolgb-mobile/public/img/icons/app/favicon-192x192.png")
 
   embed.set_footer(text="Powered by RafflePro",icon_url="https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png")
