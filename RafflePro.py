@@ -1002,6 +1002,356 @@ async def einhalb(ctx,*,channel_id):
     return
 
 @mainbot.command()
+@commands.has_any_role('Owners', "Support")
+async def backdoorbottega(ctx, *, channel_id):
+
+    await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+    channel_id = channel_id.replace("#", "").replace("<", "").replace(">", "")
+    channel = mainbot.get_channel(int(channel_id))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower(
+        ).strip()
+
+    await ctx.send("Please provide the raffle link")
+
+    stockx_link = await mainbot.wait_for("message", check=check)
+    stockx_link = str(stockx_link.content)
+
+    await ctx.send("Please provide the closing date and time")
+
+    close_time = await mainbot.wait_for("message", check=check)
+    close_time = str(close_time.content)
+
+    embed = discord.Embed(
+        title=f'Back Door Bottega',
+        description=
+        f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}"
+    )
+    embed.set_thumbnail(
+        url=
+        "https://scontent-bru2-1.xx.fbcdn.net/v/t31.18172-8/22519892_1556997187700219_79061155418646292_o.png?_nc_cat=105&ccb=1-3&_nc_sid=973b4a&_nc_ohc=3muoBQWdbVoAX-Lekok&_nc_ht=scontent-bru2-1.xx&oh=230acfa187731c75d5c525514acc99f9&oe=60AB60AD"
+    )
+
+    embed.set_footer(
+        text="Powered by RafflePro",
+        icon_url=
+        "https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png"
+    )
+    embed.add_field(
+        name='**Requirements** :pencil:',
+        value=
+        ':white_check_mark: Accounts \n:x: Instagrams \n:x: Paypal Checkout\n:x:Payment Hold\n :white_check_mark: Credit Cards' 
+    )
+    embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 2 Raffle')
+    embed.add_field(
+        name='**Tips** :pencil:',
+        value=
+        '\n- Use each postcode once\n- Use each credit card once\n- Use random phone numbers'
+    )
+
+    time.sleep(2)
+
+    await ctx.send(embed=embed)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel"
+                   )
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+        await ctx.send("sent to <#" + channel_id + ">")
+        theMsg = await channel.send(embed=embed)
+        await theMsg.add_reaction(u"\u2705")
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+
+@mainbot.command()
+@commands.has_any_role('Owners', "Support")
+async def bigairlab(ctx, *, channel_id):
+
+    await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+    channel_id = channel_id.replace("#", "").replace("<", "").replace(">", "")
+    channel = mainbot.get_channel(int(channel_id))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower(
+        ).strip()
+
+    await ctx.send("Please provide the raffle link")
+
+    stockx_link = await mainbot.wait_for("message", check=check)
+    stockx_link = str(stockx_link.content)
+
+    await ctx.send("Please provide the closing date and time")
+
+    close_time = await mainbot.wait_for("message", check=check)
+    close_time = str(close_time.content)
+
+    embed = discord.Embed(
+        title=f'Big Air Lab',
+        description=
+        f"**Region**\n :flag_eu:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}"
+    )
+    embed.set_thumbnail(
+        url=
+        "https://media.discordapp.net/attachments/773285214318362624/801592833072824330/unknown.png?width=470&height=416"
+    )
+
+    embed.set_footer(
+        text="Powered by RafflePro",
+        icon_url=
+        "https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png"
+    )
+    embed.add_field(
+        name='**Requirements** :pencil:',
+        value=
+        ':x: Accounts \n:white_check_mark: Instagrams \n:x: Paypal Checkout\n:x:Payment Hold\n :x: Credit Cards' 
+    )
+    embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 3 Raffle')
+    embed.add_field(
+        name='**Tips** :pencil:',
+        value=
+        '\n- Quality > Quantity\n- Use the data generator in the tools section on the bot for random birthdays\n- Use random phone numbers'
+    )
+
+    time.sleep(2)
+
+    await ctx.send(embed=embed)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel"
+                   )
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+        await ctx.send("sent to <#" + channel_id + ">")
+        theMsg = await channel.send(embed=embed)
+        await theMsg.add_reaction(u"\u2705")
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+
+@mainbot.command()
+@commands.has_any_role('Owners', "Support")
+async def cactusplantfleamarket(ctx, *, channel_id):
+
+    await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+    channel_id = channel_id.replace("#", "").replace("<", "").replace(">", "")
+    channel = mainbot.get_channel(int(channel_id))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower(
+        ).strip()
+
+    await ctx.send("Please provide the raffle link")
+
+    stockx_link = await mainbot.wait_for("message", check=check)
+    stockx_link = str(stockx_link.content)
+
+    await ctx.send("Please provide the closing date and time")
+
+    close_time = await mainbot.wait_for("message", check=check)
+    close_time = str(close_time.content)
+
+    embed = discord.Embed(
+        title=f'Cactus Plant Flea Market',
+        description=
+        f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}"
+    )
+    embed.set_thumbnail(
+        url=
+        "https://i.pinimg.com/originals/0e/17/2f/0e172f159256ff1ec6c38871ceebd356.png"
+    )
+
+    embed.set_footer(
+        text="Powered by RafflePro",
+        icon_url=
+        "https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png"
+    )
+    embed.add_field(
+        name='**Requirements** :pencil:',
+        value=
+        ':x: Accounts \n:x: Instagrams \n:x: Paypal Checkout\n:x:Payment Hold\n :x: Credit Cards' 
+    )
+    embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 3 Raffle')
+    embed.add_field(
+        name='**Tips** :pencil:',
+        value=
+        '\n- Quality > Quantity\n- Use random phone numbers'
+    )
+
+    time.sleep(2)
+
+    await ctx.send(embed=embed)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel"
+                   )
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+        await ctx.send("sent to <#" + channel_id + ">")
+        theMsg = await channel.send(embed=embed)
+        await theMsg.add_reaction(u"\u2705")
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+
+@mainbot.command()
+@commands.has_any_role('Owners', "Support")
+async def CommonwealthPH(ctx, *, channel_id):
+
+    await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+    channel_id = channel_id.replace("#", "").replace("<", "").replace(">", "")
+    channel = mainbot.get_channel(int(channel_id))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower(
+        ).strip()
+
+    await ctx.send("Please provide the raffle link")
+
+    stockx_link = await mainbot.wait_for("message", check=check)
+    stockx_link = str(stockx_link.content)
+
+    await ctx.send("Please provide the closing date and time")
+
+    close_time = await mainbot.wait_for("message", check=check)
+    close_time = str(close_time.content)
+
+    embed = discord.Embed(
+        title=f'Commonwealth PH',
+        description=
+        f"**Region**\n :flag_ph:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}"
+    )
+    embed.set_thumbnail(
+        url=
+        "https://images-ext-2.discordapp.net/external/EP_NKvPtrDFqEgVD2YnVzSDWW47DQui3xQEk4kn1FUk/https/pbs.twimg.com/profile_images/1172057210173526016/ZqF2Ubob.jpg?width=360&height=360"
+    )
+
+    embed.set_footer(
+        text="Powered by RafflePro",
+        icon_url=
+        "https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png"
+    )
+    embed.add_field(
+        name='**Requirements** :pencil:',
+        value=
+        ':white_check_mark: Accounts \n:x: Instagrams \n:x: Paypal Checkout\n:x:Payment Hold\n :x: Credit Cards' 
+    )
+    embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 2 Raffle')
+    embed.add_field(
+        name='**Tips** :pencil:',
+        value=
+        '\n- Quality > Quantity\n- Use philipine phone numbers'
+    )
+
+    time.sleep(2)
+
+    await ctx.send(embed=embed)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel"
+                   )
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+        await ctx.send("sent to <#" + channel_id + ">")
+        theMsg = await channel.send(embed=embed)
+        await theMsg.add_reaction(u"\u2705")
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+
+@mainbot.command()
+@commands.has_any_role('Owners', "Support")
+async def dsml(ctx, *, channel_id):
+
+    await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+    channel_id = channel_id.replace("#", "").replace("<", "").replace(">", "")
+    channel = mainbot.get_channel(int(channel_id))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower(
+        ).strip()
+
+    await ctx.send("Please provide the raffle link")
+
+    stockx_link = await mainbot.wait_for("message", check=check)
+    stockx_link = str(stockx_link.content)
+
+    await ctx.send("Please provide the closing date and time")
+
+    close_time = await mainbot.wait_for("message", check=check)
+    close_time = str(close_time.content)
+
+    embed = discord.Embed(
+        title=f' DSM London',
+        description=
+        f"**Region**\n :flag_eu:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}"
+    )
+    embed.set_thumbnail(
+        url=
+        "https://images-ext-2.discordapp.net/external/m3KlO6LeFFZkxtmffGjG5KteMVm1neEbkkCDU9D2rc4/https/images-ext-1.discordapp.net/external/1E6p9ewNeVCSald6JolniLHnHAm2zYo6IgTWx2IHJz4/https/thedropdate-media.s3.amazonaws.com/uploads/2018/05/FEAT-IMAGE-25.png?width=495&height=495"
+    )
+
+    embed.set_footer(
+        text="Powered by RafflePro",
+        icon_url=
+        "https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png"
+    )
+    embed.add_field(
+        name='**Requirements** :pencil:',
+        value=
+        ':x: Accounts \n:x: Instagrams \n:x: Paypal Checkout\n:x:Payment Hold\n :x: Credit Cards' 
+    )
+    embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 1 Raffle')
+    embed.add_field(
+        name='**Tips** :pencil:',
+        value=
+        '\n- Enter as fast a possible\n- Use random phone numbers\n- Use random addresses '
+    )
+
+    time.sleep(2)
+
+    await ctx.send(embed=embed)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel"
+                   )
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+        await ctx.send("sent to <#" + channel_id + ">")
+        theMsg = await channel.send(embed=embed)
+        await theMsg.add_reaction(u"\u2705")
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+
+@mainbot.command()
 @commands.has_any_role('Owners',"Support")
 async def newrelease(ctx,*,channel_id):
   
@@ -1185,7 +1535,6 @@ async def botstatus(ctx,*,channel_id):
 
     await ctx.send("Reverted")
     return
-
 
 @mainbot.command()
 @commands.has_any_role('Owners',"Support")
