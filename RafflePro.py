@@ -2332,6 +2332,76 @@ async def yme(ctx, *, channel_id):
         return
 
 @mainbot.command()
+@commands.has_any_role('Owners', "Support")
+async def kickz(ctx, *, channel_id):
+
+    await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
+
+    channel_id = channel_id.replace("#", "").replace("<", "").replace(">", "")
+    channel = mainbot.get_channel(int(channel_id))
+
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel and msg.content.lower(
+        ).strip()
+
+    await ctx.send("Please provide the raffle link")
+
+    stockx_link = await mainbot.wait_for("message", check=check)
+    stockx_link = str(stockx_link.content)
+
+    await ctx.send("Please provide the closing date and time")
+
+    close_time = await mainbot.wait_for("message", check=check)
+    close_time = str(close_time.content)
+
+    embed = discord.Embed(
+        title=f'Kickz',
+        description=
+        f"**Region**\n :globe_with_meridians:\n\n**Raffle URL**\n {stockx_link}\n\n**Closes**\n {close_time}"
+    )
+    embed.set_thumbnail(
+        url=
+        "https://kickz.akamaized.net/media/images/landingpages/BUREAU-BORSCHE/KICKZ_400x200_Logo2000.jpg"
+    )
+
+    embed.set_footer(
+        text="Powered by RafflePro",
+        icon_url=
+        "https://cdn.discordapp.com/attachments/773644857004523530/773644903443464262/RafflePro4300.png"
+    )
+    embed.add_field(
+        name='**Requirements** :pencil:',
+        value=
+        ':x: Accounts \n:white_check_mark: Instagrams \n:white_check_mark:Paypal Checkout\n:white_check_mark:Payment Hold'
+    )
+    embed.add_field(name='**Raffle Tier :trophy:**', value='Tier 1 Raffle')
+    embed.add_field(
+        name='**Tips** :pencil:',
+        value=
+        '\n- Use real address only\n- Utilise guest paypal checkout\n- Put the email you entered with as the guests checkout email\n- Use regional link'
+    )
+
+    time.sleep(2)
+
+    await ctx.send(embed=embed)
+
+    await ctx.send("\n\nConfirm this by saying 'yes' anything else will cancel"
+                   )
+    msg_confirm = await mainbot.wait_for("message", check=check)
+    msg_confirm = str(msg_confirm.content).lower().strip()
+
+    if msg_confirm == "yes":
+
+        await ctx.send("sent to <#" + channel_id + ">")
+        theMsg = await channel.send(embed=embed)
+        await theMsg.add_reaction(u"\u2705")
+
+    else:
+
+        await ctx.send("Reverted")
+        return
+
+@mainbot.command()
 @commands.has_any_role('Owners',"Support")
 async def newrelease(ctx,*,channel_id):
   
