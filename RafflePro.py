@@ -2605,7 +2605,7 @@ async def releasesChannel(ctx):
   await ctx.channel.edit(category=B)
 
 
-raffle_links_eu = 'channel id here'
+raffle_links_eu = '773276599399219281'
 
 
 channelIds = [raffle_links_eu]
