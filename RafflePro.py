@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 import time
+import os
+from discord.utils import get 
 
 mainbot = commands.Bot(command_prefix = "-")
 mainbot.remove_command("help")
@@ -2602,6 +2604,41 @@ async def releasesChannel(ctx):
   B = discord.utils.get(ctx.guild.channels, name= "Releases")
   await ctx.channel.edit(category=B)
 
+
+raffle_links_eu = 'channel id here'
+
+
+channelIds = [raffle_links_eu]
+
+client = discord.Client()
+
+@client.event
+async def on_message(message):
+  ping = get(message.guild.roles, name = 'Support')
+
+  webhooks = message.embeds 
+  wordsInEmbed = ['Streetmachine', 'Footpatrol', 'Maha', 'NakedCPH', 'OneBlockDown' , 'Soto', 'Sotf', 'VooStore' , 'Kith', 'BSTN' , 'Big Air Lab', 'Noirfonce', 'TheNextDoor' , 'Très Bien' , '43Einhalb', 'YME', 'Stress95', 'JD Sports', 'Backdoor', 'Pro Direct', 'Patta']
+
+  for webhook in webhooks:
+    theWebhookMessage = webhook.to_dict()
+    webhookValues = theWebhookMessage.values()
+
+    for embed in webhookValues:
+      if (type(embed) == list):
+
+        for field in embed:
+          fieldValues = field.values()
+
+          for text in fieldValues:
+            wordsInEmbed.append(text)
+
+      else:
+        wordsInEmbed.append(embed)
+
+  keywords = [ ]
+  
+  if any(word in keywords for word in wordsInEmbed):
+    await message.channel.send(ping.mention)
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
