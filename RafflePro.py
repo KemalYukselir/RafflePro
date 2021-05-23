@@ -2675,10 +2675,9 @@ async def releasesChannel(ctx):
 
 raffle_links_eu = 773276599399219281
 channelIds = [raffle_links_eu]
-client = discord.Client()
 
 
-@client.event
+@mainbot.event
 async def on_message(message):
     ping = get(message.guild.roles, name = 'Support')
 
@@ -2705,9 +2704,10 @@ async def on_message(message):
   
     if any(word in keywords for word in wordsInEmbed):
         await message.channel.send(ping.mention)
+    
+    await mainbot.process_commands(message)
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
 
-client.run(token_RP)
 mainbot.run(token_RP)
