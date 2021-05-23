@@ -2678,7 +2678,7 @@ channelIds = [raffle_links_eu]
 client = discord.Client()
 
 
-@mainbot.event
+@client.event
 async def on_message(message):
     ping = get(message.guild.roles, name = 'Support')
 
@@ -2709,5 +2709,5 @@ async def on_message(message):
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
 
-#client.run(token_RP)
+client.run(token_RP)
 mainbot.run(token_RP)
