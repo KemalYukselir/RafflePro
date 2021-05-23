@@ -95,7 +95,6 @@ async def edit(ctx,*,channel_id):
         await ctx.send("Reverted")
         return
                 
-
 @mainbot.command()
 @commands.has_any_role('Owners',"Support")
 async def sendlink(ctx,*,channel_id):
@@ -180,7 +179,6 @@ async def sendlink(ctx,*,channel_id):
 
       await ctx.send("Reverted")
       return
-
 
 @mainbot.command()
 @commands.has_any_role('Owners',"Support")
@@ -2605,43 +2603,41 @@ async def releasesChannel(ctx):
   await ctx.channel.edit(category=B)
 
 
-raffle_links_eu = '773276599399219281'
-
-
+raffle_links_eu = 773276599399219281
 channelIds = [raffle_links_eu]
-
 client = discord.Client()
+
 
 @client.event
 async def on_message(message):
-  ping = get(message.guild.roles, name = 'Support')
+    ping = get(message.guild.roles, name = 'Support')
 
-  webhooks = message.embeds 
-  wordsInEmbed = ['Streetmachine', 'Footpatrol', 'Maha', 'NakedCPH', 'OneBlockDown' , 'Soto', 'Sotf', 'VooStore' , 'Kith', 'BSTN' , 'Big Air Lab', 'Noirfonce', 'TheNextDoor' , 'Très Bien' , '43Einhalb', 'YME', 'Stress95', 'JD Sports', 'Backdoor', 'Pro Direct', 'Patta']
+    webhooks = message.embeds 
+    wordsInEmbed = []
+    if message.channel.id == raffle_links_eu:
+        for webhook in webhooks:
+            theWebhookMessage = webhook.to_dict()
+            webhookValues = theWebhookMessage.values()
 
-  for webhook in webhooks:
-    theWebhookMessage = webhook.to_dict()
-    webhookValues = theWebhookMessage.values()
+            for embed in webhookValues:
+                if (type(embed) == list):
 
-    for embed in webhookValues:
-      if (type(embed) == list):
+                    for field in embed:
+                        fieldValues = field.values()
 
-        for field in embed:
-          fieldValues = field.values()
+                    for text in fieldValues:
+                        wordsInEmbed.append(text)
 
-          for text in fieldValues:
-            wordsInEmbed.append(text)
+                else:
+                    wordsInEmbed.append(embed)
 
-      else:
-        wordsInEmbed.append(embed)
-
-  keywords = [ ]
+    keywords = ['Footpatrol','Maha', 'NakedCPH', 'OneBlockDown' , 'Soto', 'Sotf', 'VooStore' , 'Kith', 'BSTN' , 'Big Air Lab', 'Noirfonce', 'TheNextDoor' , 'Très Bien' , '43Einhalb', 'YME', 'Stress95', 'JD Sports', 'Backdoor', 'Pro Direct', 'Patta']
   
-  if any(word in keywords for word in wordsInEmbed):
-    await message.channel.send(ping.mention)
+    if any(word in keywords for word in wordsInEmbed):
+        await message.channel.send(ping.mention)
 
 token_test = "NzE0MDgzODU1MjU0MDI4MzA4.Xspgag.Uof1FspmtRqpQpHAnYboMZLyDXw"
 token_RP = "NzA5OTQ0OTkwNzE2OTE5ODA4.XrtRyw.y8h1zgO-qg63x2d17dLkjOSLvDY"
 
-
+client.run(token_RP)
 mainbot.run(token_RP)
