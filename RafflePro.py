@@ -9,7 +9,7 @@ mainbot.remove_command("help")
 
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def send(ctx,*,channel_id):
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
 
@@ -54,7 +54,7 @@ async def send(ctx,*,channel_id):
       return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def edit(ctx,*,channel_id):
 
     channel_id = channel_id.replace("#","").replace("<","").replace(">","")
@@ -96,7 +96,7 @@ async def edit(ctx,*,channel_id):
         return
                 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def sendlink(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -181,7 +181,7 @@ async def sendlink(ctx,*,channel_id):
       return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def raffle(ctx,*,channel_id):
   channel_id = channel_id.replace("#","").replace("<","").replace(">","")
   channel = mainbot.get_channel(int(channel_id))
@@ -221,7 +221,7 @@ async def raffle(ctx,*,channel_id):
       return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def jdsportsuk(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -272,7 +272,7 @@ async def jdsportsuk(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def jdsportsbe(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -323,7 +323,7 @@ async def jdsportsbe(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def jdsportsfr(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -374,7 +374,7 @@ async def jdsportsfr(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def jdsportsnl(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -425,7 +425,7 @@ async def jdsportsnl(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def jdsportses(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -476,7 +476,7 @@ async def jdsportses(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def jdsportsde(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -527,7 +527,7 @@ async def jdsportsde(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def footpatrol(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -578,7 +578,7 @@ async def footpatrol(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def thehipstore(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -630,7 +630,7 @@ async def thehipstore(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def footpatrolinstorefr(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -682,7 +682,7 @@ async def footpatrolinstorefr(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def footpatrolinstoreuk(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -734,7 +734,7 @@ async def footpatrolinstoreuk(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def footshop(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -788,7 +788,7 @@ async def footshop(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def naked(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -842,7 +842,7 @@ async def naked(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def stress(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -896,7 +896,7 @@ async def stress(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def bstn(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -948,7 +948,7 @@ async def bstn(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners',"Support","Legend")
 async def einhalb(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1002,7 +1002,7 @@ async def einhalb(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def backdoorbottega(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1072,7 +1072,7 @@ async def backdoorbottega(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def bigairlab(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1142,7 +1142,7 @@ async def bigairlab(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def cactusplantfleamarket(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1212,7 +1212,7 @@ async def cactusplantfleamarket(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def commonwealthph(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1282,7 +1282,7 @@ async def commonwealthph(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def dsml(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1352,7 +1352,7 @@ async def dsml(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def junkyard(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1422,7 +1422,7 @@ async def junkyard(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def maha(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1492,7 +1492,7 @@ async def maha(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def noirfonce(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1562,7 +1562,7 @@ async def noirfonce(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def obd(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1632,7 +1632,7 @@ async def obd(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def patta(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1702,7 +1702,7 @@ async def patta(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def prodirect(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1772,7 +1772,7 @@ async def prodirect(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def shuzulab(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1842,7 +1842,7 @@ async def shuzulab(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def soft(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1912,7 +1912,7 @@ async def soft(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def streetmachine(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -1982,7 +1982,7 @@ async def streetmachine(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def thenextdoor(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2052,7 +2052,7 @@ async def thenextdoor(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def travisscott(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2122,7 +2122,7 @@ async def travisscott(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def tresbien(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2192,7 +2192,7 @@ async def tresbien(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def voostore(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2262,7 +2262,7 @@ async def voostore(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def yme(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2332,7 +2332,7 @@ async def yme(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def kickz(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2402,7 +2402,7 @@ async def kickz(ctx, *, channel_id):
         return
 
 @mainbot.command()
-@commands.has_any_role('Owners', "Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def kith(ctx, *, channel_id):
 
     await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2472,7 +2472,7 @@ async def kith(ctx, *, channel_id):
         return
         
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def newrelease(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2526,7 +2526,7 @@ async def newrelease(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def randomrelease(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2602,7 +2602,7 @@ async def randomrelease(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def botstatus(ctx,*,channel_id):
   
   await mainbot.change_presence(activity=discord.Game(name="RafflePro"))
@@ -2657,7 +2657,7 @@ async def botstatus(ctx,*,channel_id):
     return
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def archiveChannel(ctx):
   channel = ctx.channel
 
@@ -2665,7 +2665,7 @@ async def archiveChannel(ctx):
   await ctx.channel.edit(category=B)
 
 @mainbot.command()
-@commands.has_any_role('Owners',"Support")
+@commands.has_any_role('Owners', "Support", "Legend")
 async def releasesChannel(ctx):
   channel = ctx.channel
 
