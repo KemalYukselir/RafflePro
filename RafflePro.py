@@ -2,7 +2,11 @@ import discord
 from discord.ext import commands
 import time
 import os
-from discord.utils import get 
+from discord.utils import get
+from keep_alive import keep_alive
+from discord.utils import get
+from discord import DMChannel
+import json
 
 mainbot = commands.Bot(command_prefix = "-")
 mainbot.remove_command("help")
@@ -2672,6 +2676,120 @@ async def releasesChannel(ctx):
   B = discord.utils.get(ctx.guild.channels, name= "Releases")
   await ctx.channel.edit(category=B)
 
+@mainbot.command()
+@commands.has_any_role('cooker')
+async def addkeywords(ctx):
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+
+    await mainbot.change_presence(activity=discord.Game(name=" keyword pinger"))
+    emb = discord.Embed(description= 'Please provide a keyword that you would like to add', color=discord.Colour.green())
+    await ctx.send(embed=emb)
+    keyword = await mainbot.wait_for("message", check = check)
+    keyword = str(keyword.content)
+    with open ('keywords.txt','a') as filehandle:
+        filehandle.write(keyword + '\n')
+
+    with open('keywords.txt','r') as filehandle:
+        filecontents = filehandle.read()
+    emb = discord.Embed(description='Added keyword: ' + keyword, color=discord.Colour.green())
+    emb.add_field(name='Keyword list', value='\n' + ''.join(filecontents)  )
+    await ctx.send(embed=emb)
+
+
+@mainbot.command()
+@commands.has_any_role('cooker')
+async def deletekeywords(ctx):
+    def check(msg):
+        return msg.author == ctx.author and msg.channel == ctx.channel
+
+    with open('keywords.txt','r') as filehandle:
+        filecontents = filehandle.read()
+        Keywords = filecontents.splitlines()
+    emb = discord.Embed(title='Current keyword list' , color=discord.Colour.orange())
+    emb.add_field(name='Keyword list', value='\n' + ''.join(filecontents)  )
+    await ctx.send(embed=emb)
+
+    emb = discord.Embed(title='Removing keyword' ,description= 'Please provide a keyword that you would like to remove', color=discord.Colour.orange())
+    await ctx.send(embed=emb)
+
+    removeKeyword = await mainbot.wait_for("message", check= check)
+    removeKeyword = str(removeKeyword.content)
+    print(removeKeyword)
+    Keywords.remove(removeKeyword)
+    NewList = Keywords.copy()
+    # with open ('keywords.txt','w') as filehandle:
+    #     for words in NewList:
+    #         filehandle.write("%s\n" % words)
+    with open ('keywords.txt','w') as filehandle:
+        filehandle.write("\n".join(NewList) + "\n")
+    with open('keywords.txt','r') as filehandle:
+        filecontents = filehandle.read()
+
+    emb = discord.Embed(title='New keyword list' ,description='Removed keyword: ' + removeKeyword, color=discord.Colour.red())
+    emb.add_field(name='Keyword list', value='\n' + ''.join(filecontents)  )
+    await ctx.send(embed=emb)
+
+@mainbot.command()
+async def keywords(ctx):
+    with open('keywords.txt','r') as filehandle:
+        filecontents = filehandle.read()
+
+        emb = discord.Embed(title='This is the current keyword list' , color=discord.Colour.blue())
+        emb.add_field(name='Keyword list', value='\n' + ''.join(filecontents)  )
+        await ctx.send(embed=emb)
+
+
+botSpam = 819155378042437642
+channels=[botSpam]
+
+@mainbot.event
+async def on_message(message):
+
+  webhooks = message.embeds
+  wordsInEmbed = []
+
+  for webhook in webhooks:
+      theWebhookMessage = webhook.to_dict()
+      webhookValues = theWebhookMessage.values()
+
+      for embed in webhookValues:
+          if (type(embed) == list):
+
+              for field in embed:
+                  fieldValues = field.values()
+
+                  for text in fieldValues:
+                      wordsInEmbed.append(text)
+
+          else:
+              wordsInEmbed.append(embed)
+  with open('keywords.txt','r') as filehandle:
+      filecontents = filehandle.read()
+      Keywords = filecontents.splitlines()
+
+
+  # if message.channel.id in channels:
+  #     if any(word in Keywords for word in wordsInEmbed ):
+  #         user = await mainbot.fetch_user('700449664079495199')
+  #         print(any(word in Keywords for word in wordsInEmbed ))
+  #         # await DMChannel.send(user,f'{word}')
+  if message.channel.id in channels:
+    for word in Keywords: 
+      for keyword in wordsInEmbed:
+        if keyword == word:
+          user = await mainbot.fetch_user('700449664079495199')
+          await DMChannel.send(user,f'New release available for {word}')
+          print(wordsInEmbed)
+
+
+
+  await mainbot.process_commands(message)
+print ('ready to run!')
+keep_alive()
+mainbot.run(os.getenv('TOKEN'))
+
+[{'text': 'July 27, 2021 1:38 pm | Powered by Raffle-Sneakers', 'proxy_icon_url': 'https://images-ext-2.discordapp.net/external/xiSga4dR1mmseMpwasuVCeuE7hlRmnUEUXQHPLyUkDQ/https/images-ext-2.discordapp.net/external/fNlt3cOzCl5uDiQKUJxeBxroauBU8Ik-PNnoBQbyr8k/https/www.raffle-sneakers.com/wp-content/uploads/2020/12/Raffle_sneakers_12.png', 'icon_url': 'https://images-ext-2.discordapp.net/external/fNlt3cOzCl5uDiQKUJxeBxroauBU8Ik-PNnoBQbyr8k/https/www.raffle-sneakers.com/wp-content/uploads/2020/12/Raffle_sneakers_12.png'}, {'width': 1500, 'url': 'https://www.raffle-sneakers.com/wp-content/uploads/2021/07/BANNER-WEBHOOK.png', 'proxy_url': 'https://images-ext-1.discordapp.net/external/RDymdklNHmj7b73rUz-lwEeSNlaoXCTVqaVzxC9FTLw/https/www.raffle-sneakers.com/wp-content/uploads/2021/07/BANNER-WEBHOOK.png', 'height': 250}, {'width': 192, 'url': 'https://www.raffle-sneakers.com/wp-content/uploads/2020/03/footpatrollondon.png', 'proxy_url': 'https://images-ext-1.discordapp.net/external/ZhuW9dXjqaIvmqu42nz6O1mbpWQSI6jGnOhZd-aP1nE/https/www.raffle-sneakers.com/wp-content/uploads/2020/03/footpatrollondon.png', 'height': 192}, 'Footpatrol', 'Shop', True, ':flag_gb: United Kingdom', 'Country', True, '150€', 'Price', True, ':handshake: Pickup', 'Delivery', True, 'Now', 'Starts', True, 'No end date mentioned, act fast!', 'Closes', True, 'Form', 'Raffle Type', True, 'Online', 'Sign Up', True, '-', 'Bots', True, '[StockX](https://stockx.pvxt.net/0JmN33)|  [All raffles for UNDERCOVER x Nike Dunk High UBA Gym Red](https://www.raffle-sneakers.com/undercover-x-nike-dunk-high-uba-gym-red/)', 'Useful links', False, 'rich', 'https://cutt.ly/wQygBbV', 'UNDERCOVER x Nike Dunk High UBA Gym Red']
 
 raffle_links_eu = 773276599399219281
 channelIds = [raffle_links_eu]
